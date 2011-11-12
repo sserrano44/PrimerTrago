@@ -14,7 +14,7 @@ class Neighborhood(models.Model):
     name = models.CharField(max_length=32)
 
     def __unicode__(self):
-        return "%s: %s" % (self.city.name, self.name)
+        return "%s" % (self.name)
 
 class SubNeighborhood(models.Model):
     city = models.ForeignKey(City)

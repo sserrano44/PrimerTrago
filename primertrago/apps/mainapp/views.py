@@ -5,10 +5,13 @@ from django.template.context import RequestContext
 from mainapp.models import Bar
 from django.template.response import TemplateResponse
 from django.http import Http404
+from mainapp.forms import FilterForm
 
 
 def home(request):
+    
     params = {
+        'filter_form': FilterForm(),
         'featured': Bar.objects.filter(featured=True),
         'bars': Bar.objects.all()
     }
