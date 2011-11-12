@@ -8,10 +8,58 @@
 .brand div {
 	background: url('../images/logo_web_small.png');
 	width: 96px;
-    height: 35px; 
+    height: 35px;
 }
 
 .bar-badge .bar-image {
 	width: 120px;
 	height: 120px;
+}
+
+
+#happyHourFilter {
+  float: left;
+  position: relative;
+  margin: 12px 12px 3px;
+  background: #FBFAFA url(/static/images/find_hh_bar.png) no-repeat scroll 0 0;
+  width: 955px;
+  height: 41px;
+  display: inline;
+  z-index: 41;
+}
+
+#happyHourForm {
+float: left;
+position: relative;
+}
+
+#happyHourForm .day {
+width: 124px;
+left: 200px;
+}
+
+#happyHourForm .dropdown {
+position: absolute;
+font-size: 15px;
+top: 10px;
+margin-top: 2px;
+}
+
+#happyHourForm .time {
+left: 352px;
+margin-top: 0;
+}
+
+#happyHourForm .location {
+width: 170px;
+left: 444px;
+}
+
+#happyHourForm .submit {
+  color: #666;
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  left: 624px;
+  top: 11px;
 }

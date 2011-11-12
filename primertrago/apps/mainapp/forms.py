@@ -11,9 +11,8 @@ WEEKDAY = (
     ('sabado', _("Sabado")),
     ('domingo', _("Domingo")),
 )
-
 class FilterForm(forms.Form):
-    weekday = forms.ChoiceField(choices=WEEKDAY, widget=forms.Select(attrs={'class': 'medium'}))
-    hour    = forms.TimeField(widget=forms.TextInput(attrs={'class': 'mini'}))
-    neighborhood = forms.ModelChoiceField(Neighborhood.objects.all(), widget=forms.Select(attrs={'class': 'medium'}))
+    weekday = forms.ChoiceField(required=False,choices=WEEKDAY, widget=forms.Select(attrs={'class': 'medium dropdown day'}))
+    hour    = forms.TimeField(required=False,widget=forms.TextInput(attrs={'class': 'mini dropdown time'}))
+    neighborhood = forms.ModelChoiceField(Neighborhood.objects.all(),required=False, widget=forms.Select(attrs={'class': 'medium dropdown location'}))
 #                                          to_field_name=lambda x: x.name)
