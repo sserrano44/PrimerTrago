@@ -33,6 +33,7 @@ class Bar(models.Model):
     email = models.EmailField(null=True, blank=True)
     facebook_page = models.URLField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    image = models.FileField(upload_to="bar", null=True, blank=True)
 
     def __unicode__(self):
         return self.name
