@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+
+{% block container %}
+  <div class="row">
+      <h2>{{ bar.name }}</h2>
+      <p>{{ bar.address }}</p>
+      {% for happy in bar.happyhour_set.all %}
+      <p>{{ happy.description }}<p>
+      {% endfor %}
+  </div>
+{% endblock %}
+

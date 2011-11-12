@@ -1,32 +1,56 @@
 {% extends "base.html" %}
-
+{% load thumbnail %}
 
 
 {% block container %}
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
+      <div>
         <h1>Hello, world!</h1>
         <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
         <a class="btn primary large">Learn more &raquo;</a></p>
       </div>
 
+      {% for bar in featured %}	
+      <div class="row">
+      	{% if bar.image %}
+      	{% thumbnail bar.image 200x200 crop as thumb %}
+      	<img src="{{ thumb.url }}"/>
+      	{% else %}
+      	<img src="{{ STATIC_URL }}images/foto_bar.png"/>
+      	{% endif %}
+      	<h2>{{ bar.name }}</h2>
+      	<p>{{ bar.description }}</p>
+      	<a class="btn" href="{{ bar.url }}">read more</a>
+      </div>
+      {% endfor %}
+      
       <!-- Example row of columns -->
       <div class="row">
-        <div class="span11">
         {% for bar in bars %}
+        <div class="span3">
+      	{% if bar.image %}
+      	{% thumbnail bar.image 120x120 crop as thumb %}
+      	<img src="{{ thumb.url }}"/>
+      	{% else %}
+      	<img src="{{ STATIC_URL }}images/foto_bar.png"/>
+      	{% endif %}
           <h2>{{ bar.name }}</h2>
           <p>{{ bar.address }}</p>
           {% for happy in bar.happyhour_set.all %}
-          <p>{{ happy.description }}<p>
+          {# <p>{{ happy.description }}<p> #}
           {% endfor %}
-          <a class="btn" href="#">View details &raquo;</a></p>
-         {% endfor %}
+          <a class="btn" href="{{ bar.url }}">View details &raquo;</a></p>
         </div>
+        {% endfor %}
+     </div>
+     {% comment %}
+     <div class="row">
         <div class="span5">
           <h2>Heading</h2>
            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p><a class="btn" href="#">View details &raquo;</a></p>
        </div>
-      </div>
+     </div>
+     {% endcomment %}
 {% endblock %}
 
