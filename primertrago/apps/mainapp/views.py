@@ -10,6 +10,8 @@ from mainapp.forms import FilterForm
 
 def home(request):
     
+    
+    
     params = {
         'filter_form': FilterForm(),
         'featured': Bar.objects.filter(featured=True),
