@@ -2,4 +2,7 @@ django
 south
 PIL
 easy-thumbnails
+python-dateutil
+whoosh
+django-haystack
 
