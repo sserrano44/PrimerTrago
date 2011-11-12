@@ -8,9 +8,12 @@
       <div class="clearfix">
             <label for="normalSelect">Select</label>
             <div class="input">
+            <form action="." method="GET">
 				{{ filter_form.weekday }}
 				{{ filter_form.hour }}
 				{{ filter_form.neighborhood }}
+			    <input type="submit" class="btn primary" value="go">
+			</form>
             </div>            
           </div>
         <h1>Hello, world!</h1>
