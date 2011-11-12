@@ -1,6 +1,17 @@
 @import "bootstrap.css";
 
+.topbar  .brand {
+	margin: 0;
+	padding: 2px 10px;
+}
 
 .brand div {
-	background: url('../images/logo_web.png');
+	background: url('../images/logo_web_small.png');
+	width: 96px;
+    height: 35px; 
+}
+
+.bar-badge .bar-image {
+	width: 120px;
+	height: 120px;
 }

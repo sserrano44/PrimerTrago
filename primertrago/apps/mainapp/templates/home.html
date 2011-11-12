@@ -27,13 +27,15 @@
       <!-- Example row of columns -->
       <div class="row">
         {% for bar in bars %}
-        <div class="span3">
+        <div class="span3 bar-badge">
+        <div class="bar-image">
       	{% if bar.image %}
-      	{% thumbnail bar.image 120x120 crop as thumb %}
+      	{% thumbnail bar.image 120x120 as thumb %}
       	<img src="{{ thumb.url }}"/>
       	{% else %}
       	<img src="{{ STATIC_URL }}images/foto_bar.png"/>
       	{% endif %}
+      	</div>
           <h2>{{ bar.name }}</h2>
           <p>{{ bar.address }}</p>
           {% for happy in bar.happyhour_set.all %}

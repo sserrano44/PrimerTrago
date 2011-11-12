@@ -32,13 +32,16 @@
       <div class="fill">
         <div class="container">
           <a class="brand" href="{% url mainapp_home %}">
-          	<div>Primer Trago</div>
+          	<div></div>
           </a>
           <ul class="nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
+          <form class="pull-left" action="/search/">
+            <input type="text" name="q" placeholder="Search">
+          </form>
         </div>
       </div>
     </div>

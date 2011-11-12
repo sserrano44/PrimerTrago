@@ -1,0 +1,5 @@
+{{ object.name }}
+{{ object.neighborhood.name }}
+{{ object.description }}
+{{ object.address }}
+

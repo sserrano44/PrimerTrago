@@ -127,10 +127,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+
+    #third
     "south",
-    "mainapp",
+    "haystack",
     'easy_thumbnails',
 
+    #app
+    "mainapp",
 )
 
 # A sample logging configuration. The only tangible logging
@@ -156,6 +160,9 @@ LOGGING = {
     }
 }
 
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_SITECONF = 'primertrago.search_sites'
+HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_DIR, 'whoosh_idx')
 
 try:
   from local_settings import *
