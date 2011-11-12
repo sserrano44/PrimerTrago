@@ -37,6 +37,7 @@ class Bar(models.Model):
     description        = models.TextField(null=True, blank=True)
     image              = models.FileField(upload_to="bar", null=True, blank=True)
     featured           = models.BooleanField(default=False)
+    loc                = models.CharField(default=None, null=True, blank=True, max_length=64)
 
     def __unicode__(self):
         return self.name
@@ -46,6 +47,18 @@ class Bar(models.Model):
             return reverse("mainapp_bar", args=[self.slug])
         else:
             return reverse("mainapp_bar", args=[self.id])
+
+    def resolve(self):
+        from geopy import geocoders  
+        g = geocoders.Google()
+        place, (lat, lng) = g.geocode("%s, %s, Argentina" % (self.address, 
+                                                             self.neighborhood.city.name), 
+                                      exactly_one=False)[0]
+        #print "%s: %.5f, %.5f" % (place, lat, lng)  
+        self.loc = "%s,%s" % (lat, lng)  
+        self.save()
+        return
+
 
 class HappyHour(models.Model):
     bar = models.ForeignKey(Bar)
