@@ -61,5 +61,6 @@ def bar(request, id=None, slug=None):
     
     params = {
         'bar': bar,
+        'filter_form': FilterForm()
     }
     return TemplateResponse(request, "bar.html", params)
