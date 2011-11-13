@@ -17,3 +17,6 @@ site.addsitedir('/home/sserrano/env/lib/python2.6/site-packages')
 import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
 
+sys.stdout = sys.stderr
+
+
