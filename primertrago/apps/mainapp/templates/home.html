@@ -7,7 +7,7 @@
 		{% if featured %}
 		<h1>Destacados</h1>
 		{% for bar in featured.0 %}
-		<div id="bar_horizontal">
+		<div id="bar_horizontal" class="margin-bottom: 5px;">
 		
 			<a href="{{ bar.url }}">
 			{% if bar and bar.image.url %}
@@ -31,6 +31,7 @@
 			<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
+		<br/>
       	{% endfor %}
       	{% endif %}
 
