@@ -9,7 +9,7 @@
 		{% for bar in featured %}
 		<div id="bar_horizontal">
 			<a href="{{ bar.url }}">
-			{% if bar.image.url %}
+			{% if bar and bar.image.url %}
       		{% thumbnail bar.image 200x200 crop as thumb %}
       		<img src="{{ thumb.url }}" class="left"/>
       		{% else %}
@@ -36,7 +36,7 @@
 
         {% for bar in bars %}
 		<div id="bar_vertical" {% if forloop.counter|divisibleby:"4" %}style="margin-right: 0;"{% endif %}>
-			{% if bar.image.url %}
+			{% if  bar and bar.image.url %}
       		{% thumbnail bar.image 120x120 as thumb %}
       		<img src="{{ thumb.url }}" class="left" style="margin-bottom: 5px;" />
       		{% else %}
