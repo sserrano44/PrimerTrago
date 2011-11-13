@@ -94,7 +94,11 @@ h1 { font-size: 18px; color: #f8981d;}
 h2 { font-size: 15px; color: #f8981d; margin: 0 10px 5px 0;}
 
 #bar_horizontal { display: block; border: 1px solid #ccc; padding: 10px; width: 576px;-moz-border-radius:10px;-webkit-border-radius:10px ; background: url(bg_bar.png) bottom repeat-x #fff;}
-#bar_vertical { display: block; border: 1px solid #ccc;padding: 10px; width: 120px;-moz-border-radius:10px;-webkit-border-radius:10px ; background: url(bg_bar.png) bottom repeat-x #fff; margin: 10px 10px 10px 0; float: left;}
+#bar_vertical {
+display: block; border: 1px solid #ccc;padding: 10px; width: 120px;-moz-border-radius:10px;-webkit-border-radius:10px ; background: url(bg_bar.png) bottom repeat-x #fff; margin: 10px 10px 10px 0; float: left;
+height: 250px;
+
+}
 	.nombre { color: #497af4; font-size: 16px; font-weight: bold; margin: 0 0 3px 0; display: block;}
 		.nombre a { text-decoration: none; color: #497af4; } .nombre a:hover { text-decoration: none; color: #497af4; text-decoration: underline; }
 	.descripcion {color: #363636; font-size: 12px;  margin: 0 0 3px 0; display: block;}
