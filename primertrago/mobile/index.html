@@ -131,7 +131,29 @@ $('#map').live("pagecreate",function() {
 	  dataType: 'json',
 	  success: function(data) {
 		  $(data['objects']).each(function(i, o)) {
-			  alert(o['address']);
+			  if (o.loc == null) { return; }
+			  var loc = o.loc.split(",");
+			  var myLatLng = new google.maps.LatLng(loc[0], loc[1]);
+			  if (o.happy_hour) {
+				  var image = 'http://chart.apis.google.com/chart?chst=d_map_xpin_icon&chld=pin|bank-dollar|52B552';
+				  var marker = new google.maps.Marker({
+				      position: myLatLng,
+				      map: map,
+				      icon: image
+				  });
+			  } else if (o.featured) {
+				  var image = 'http://chart.apis.google.com/chart?chst=d_map_xpin_icon&chld=pin_star|bank-dollar|52B552';
+				  var marker = new google.maps.Marker({
+				      position: myLatLng,
+				      map: map,
+				      icon: image
+				  });
+			  } else {
+				  var marker = new google.maps.Marker({
+				      position: myLatLng,
+				      map: map,
+				  });
+			  }
 		  }
 	  }
   })

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mainapp.models import Bar, Neighborhood, City, HappyHour
+from mainapp.models import Bar, Neighborhood, City, HappyHour, SubNeighborhood
 
 
 class HappyHourInline(admin.TabularInline):
@@ -12,4 +12,5 @@ class BarAdmin(admin.ModelAdmin):
 
 admin.site.register(Bar, BarAdmin)
 admin.site.register(Neighborhood)
+admin.site.register(SubNeighborhood)
 admin.site.register(City)

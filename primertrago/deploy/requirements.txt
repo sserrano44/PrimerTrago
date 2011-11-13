@@ -5,4 +5,5 @@ easy-thumbnails
 python-dateutil
 whoosh
 django-haystack
+django-tastypie
 
