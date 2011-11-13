@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
 	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript">
-	var SERVER_URL = "http://192.168.1.10/"
+	var SERVER_URL = "/"
 	</script>
 </head> 
 <body> 
@@ -126,11 +126,12 @@ $('#map').live("pagecreate",function() {
   };
   var map = new google.maps.Map(document.getElementById("map-canvas"),myOptions);
   
-  $.ajax({
+   $.ajax({
 	  url: SERVER_URL + "api/v1/bar/",
 	  dataType: 'json',
 	  success: function(data) {
-		  $(data['objects']).each(function(i, o)) {
+		  $(data['objects']).each(function(i, o) {
+
 			  if (o.loc == null) { return; }
 			  var loc = o.loc.split(",");
 			  var myLatLng = new google.maps.LatLng(loc[0], loc[1]);
@@ -138,26 +139,24 @@ $('#map').live("pagecreate",function() {
 				  var image = 'http://chart.apis.google.com/chart?chst=d_map_xpin_icon&chld=pin|bank-dollar|52B552';
 				  var marker = new google.maps.Marker({
 				      position: myLatLng,
-				      map: map,
 				      icon: image
 				  });
 			  } else if (o.featured) {
 				  var image = 'http://chart.apis.google.com/chart?chst=d_map_xpin_icon&chld=pin_star|bank-dollar|52B552';
 				  var marker = new google.maps.Marker({
 				      position: myLatLng,
-				      map: map,
 				      icon: image
 				  });
 			  } else {
 				  var marker = new google.maps.Marker({
 				      position: myLatLng,
-				      map: map,
 				  });
 			  }
-		  }
+			  marker.setMap(map); 
+
+		  });
 	  }
-  })
-  
+   });
 });
 </script>
 </body>
