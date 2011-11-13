@@ -3,51 +3,45 @@
 {% load thumbnail %}
 
 {% block container %}
-    <h2>Search</h2>
 
-    <form method="get" action=".">
-        <fieldset>
-            <div class="clearfix">
-            <label for="xlInput">X-Large input</label>
-            <div class="input">
-              <input class="xlarge" id="xlInput" name="q" size="30" type="text">
-	          <input type="submit" class="btn primary" value="Search">
-            </div>
-          </div>
-        </fieldset>
-    </form>
-    
-          
 
+
+    <div id="contenido">
         {% if query %}
-            <h3>Results</h3>
-			<div class="row">
+            <h3>Resultados</h3>
             {% for result in page.object_list %}
             	{% comment %}
                 <p><a href="{{ result.object.url }}">{{ result.object.name }}</a></p>
                 {% endcomment %}
                 {% with result.object as bar %}
-                <div class="span3 bar-badge">
-		        <div class="bar-image">
+		<div id="bar_vertical" class="span3">
+
+                      <a href="{{ bar.url }}">
 		      	{% if bar.image %}
 		      	{% thumbnail bar.image 120x120 as thumb %}
-		      	<img src="{{ thumb.url }}"/>
+		      	<img src="{{ thumb.url }}" class="left"//>
 		      	{% else %}
-		      	<img src="{{ STATIC_URL }}images/foto_bar.png"/>
-		      	{% endif %}
-		      	</div>
-		          <h2>{{ bar.name }}</h2>
-		          <p>{{ bar.address }}</p>
-		          {% for happy in bar.happyhour_set.all %}
-		          {# <p>{{ happy.description }}<p> #}
-		          {% endfor %}
-		          <a class="btn" href="{{ bar.url }}">View details &raquo;</a></p>
-		        </div>
+		      	<img src="{{ STATIC_URL }}images/foto_bar.png" class="left"//>
+                        {% endif %}
+                      </a>
+	          <div class="right" style=" width: 120px;">
+				<span class="nombre"><a href="{{ bar.url }}" title="Entrar al Bar">{{ bar.name }}</a></span>
+					<div class="clear"></div>
+					<span class="descripcion">{{ bar.description|truncatewords:8 }}</span>
+					<div class="clear"></div>
+					<span class="direccion">{{ bar.address }}</span>
+					<div class="clear"></div>
+					<span class="barrio">
+					{{ bar.neighborhood.name }}{% if bar.subneighborhood %} - {{ bar.subneighborhood }}{% endif %}
+					</span>
+			</div>
+			<div class="clear"></div>
+
+				        </div>
 		        {% endwith %}
             {% empty %}
                 <p>No results found.</p>
             {% endfor %}
-            </div>
 
             {% if page.has_previous or page.has_next %}
                 <div>
@@ -59,5 +53,5 @@
         {% else %}
             {# Show some example queries to run, maybe query syntax, something else? #}
         {% endif %}
-
+      </div>
 {% endblock %}
