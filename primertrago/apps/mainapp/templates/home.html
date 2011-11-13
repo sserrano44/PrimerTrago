@@ -11,7 +11,7 @@
 		
 			<a href="{{ bar.url }}">
 			{% if bar and bar.image.url %}
-      		{% thumbnail bar.image 200x200 crop as thumb %}
+      		{% thumbnail bar.image 120x120 crop as thumb %}
       		<img src="{{ thumb.url }}" class="left"/>
       		{% else %}
       		<img src="{{ STATIC_URL }}images/foto_bar.png" class="left"/>
