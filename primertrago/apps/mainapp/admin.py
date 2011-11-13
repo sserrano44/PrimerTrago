@@ -9,6 +9,10 @@ class BarAdmin(admin.ModelAdmin):
     inlines = [
         HappyHourInline,
     ]
+    list_display = ('name', 'address', 'neighborhood')
+    list_filter  = ('neighborhood',)
+    search_fields = ['name', 'address']
+
 
 admin.site.register(Bar, BarAdmin)
 admin.site.register(Neighborhood)
