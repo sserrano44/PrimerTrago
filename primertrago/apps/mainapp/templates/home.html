@@ -16,7 +16,7 @@
       		<img src="{{ STATIC_URL }}images/foto_bar.png" class="left"/>
       		{% endif %}
       		</a>
-			
+						
 			<div class="right" style=" width: 450px;">
 				<span class="nombre"><a href="{{ bar.url }}" title="Entrar al Bar">{{ bar.name }}</a></span>
 					<div class="clear"></div>
@@ -61,6 +61,8 @@
 			<div class="clear"></div>			
 		</div>
 		{% if forloop.counter|divisibleby:"4" %}<div class="clear"></div>{% endif %}
+		{% empty %}
+		<p>No hay resultados para la busqueda</p>
         {% endfor %}	
 	</div>
 	<div id="sidebar">
