@@ -22,6 +22,7 @@
     -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  text-align: center;
 }
 
 #happyHourFilter, #happyHourForm label {
@@ -35,6 +36,16 @@
   color: #fff;
 }
 
+#happyHourFilter .title{
+  line-height: 38px;
+  margin-left: 10px;
+}
+
+
+#happyHourFilter.row {
+zoom: 1;
+margin-left: 0px;
+}
 #happyHourForm label {
   width: 35px;
   font-size: 14px;
@@ -75,10 +86,10 @@ body { background: #ffffff; margin:0px; padding:0px; color:#3d3e3d; font-family:
 	ul { display: inline; margin: 0px; padding: 5px 5px;}
 	li { list-style: none; display: inline; margin: 0 5px;}
 	li a { color: #fff; text-decoration:none;} li a:hover { color: #fff;text-decoration:underline;}
-	
+
 #contenido { display: block; width: 600px; float: left; padding: 5px; }
 #sidebar { display: block; width: 300px; float: right; padding: 10px;}
-	
+
 h1 { font-size: 18px; color: #f8981d;}
 h2 { font-size: 15px; color: #f8981d; margin: 0 10px 5px 0;}
 
