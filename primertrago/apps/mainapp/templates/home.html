@@ -1,26 +1,83 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 
-
 {% block container %}
+
+
+	<div id="contenido">
+		
+		{% if featured %}
+		<h1>Destacados</h1>
+		{% for bar in featured %}
+		<div id="bar_horizontal">
+			<a href="{{ bar.url }}">
+			{% if bar.image %}
+      		{% thumbnail bar.image 200x200 crop as thumb %}
+      		<img src="{{ thumb.url }}" class="left"/>
+      		{% else %}
+      		<img src="{{ STATIC_URL }}images/foto_bar.png" class="left"/>
+      		{% endif %}
+      		</a>
+			
+			<div class="right" style=" width: 450px;">
+				<span class="nombre"><a href="{{ bar.url }}" title="Entrar al Bar">{{ bar.name }}</a></span>
+					<div class="clear"></div>
+					<span class="descripcion">{{ bar.description|truncatewords:15 }}</span>
+					<div class="clear"></div>
+					<span class="direccion">{{ bar.address }}</span>
+					<div class="clear"></div>
+					<span class="barrio">
+					{{ bar.neighborhood.name }}{% if bar.subneighborhood %} - {{ bar.subneighborhood }}{% endif %}
+					</span>	
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+      	{% endfor %}
+      	{% endif %}
+
+
+        {% for bar in bars %}
+		<div id="bar_vertical">
+			{% if bar.image %}
+      		{% thumbnail bar.image 120x120 as thumb %}
+      		<img src="{{ thumb.url }}" class="left" style="margin-bottom: 5px;" />
+      		{% else %}
+      		<img src="{{ STATIC_URL }}images/foto_bar.png"/>
+      		{% endif %}
+			
+			<div class="right" style=" width: 120px;">
+				<span class="nombre"><a href="{{ bar.url }}" title="Entrar al Bar">{{ bar.name }}</a></span>
+				<div class="clear"></div>
+				<span class="descripcion">{{ bar.description|truncatewords:8 }}</span>
+				<div class="clear"></div>
+				<span class="direccion">{{ bar.address }}</span>
+				<div class="clear"></div>
+				<span class="barrio">
+				{{ bar.neighborhood.name }}{% if bar.subneighborhood %} - {{ bar.subneighborhood }}{% endif %}
+				</span>				
+			</div>
+			<div class="clear"></div>			
+		</div>
+        {% endfor %}	
+	</div>
+	<div id="sidebar">
+		<img src="{{ STATIC_URL }}css/banner.png" />
+	</div>
+	<div class="clear"></div>	
+	<div id="footer">
+		<div class="logo_footer left"></div>
+		<div class="left" style="display: block; margin-top: 15px; ">Copyright &copy; 2011 PrimerTrago.com. All Rights Reserved</div>		
+		<a href="http://www.facebook.com/pages/PrimerTrago/217774161625916" title='Hazte fan!' class="icon_fb right"></a>
+		<a href="https://twitter.com/#!/primertrago" class="icon_tw right" title="Seguinos en Twitter!"></a>
+		<div class="clear"></div>
+	</div>
+	
+
+
+
+     {% comment %}
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div>
-
-
-        <div id="happyHourFilter">
-          <form action="." method="GET" id="happyHourForm">
-              <input type="hidden" name="filter" value="1"/>
-              {{ filter_form.weekday }}
-              {{ filter_form.hour }}
-              {{ filter_form.neighborhood }}
-	      <input type="submit" class="btn submit" value="go">
-            </form>
-        </div>
-        <h1>Hello, world!</h1>
-        <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-        <a class="btn primary large">Learn more &raquo;</a></p>
-      </div>
-
       {% for bar in featured %}
       <div class="row">
       	{% if bar.image %}
@@ -35,28 +92,6 @@
       </div>
       {% endfor %}
 
-      <!-- Example row of columns -->
-      <div class="row">
-        {% for bar in bars %}
-        <div class="span3 bar-badge">
-        <div class="bar-image">
-      	{% if bar.image %}
-      	{% thumbnail bar.image 120x120 as thumb %}
-      	<img src="{{ thumb.url }}"/>
-      	{% else %}
-      	<img src="{{ STATIC_URL }}images/foto_bar.png"/>
-      	{% endif %}
-      	</div>
-          <h2>{{ bar.name }}</h2>
-          <p>{{ bar.address }}</p>
-          {% for happy in bar.happyhour_set.all %}
-          {# <p>{{ happy.description }}<p> #}
-          {% endfor %}
-          <a class="btn" href="{{ bar.url }}">View details &raquo;</a></p>
-        </div>
-        {% endfor %}
-     </div>
-     {% comment %}
      <div class="row">
         <div class="span5">
           <h2>Heading</h2>
@@ -65,5 +100,30 @@
        </div>
      </div>
      {% endcomment %}
+
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#id_hour').timepicker({
+		ampm: false,
+		hourMin: 8,
+		timeFormat: 'hh:mm'
+	});
+});
+</script>
+
 {% endblock %}
 
+{% comment %}
+        <div class="span3 bar-badge">
+        <div class="bar-image">
+      	</div>
+          <h2>{{ bar.name }}</h2>
+          <p>{{ bar.address }}</p>
+          {% for happy in bar.happyhour_set.all %}
+          {# <p>{{ happy.description }}<p> #}
+          {% endfor %}
+          <a class="btn" href="{{ bar.url }}">View details &raquo;</a></p>
+        </div>
+        {% endcomment %}

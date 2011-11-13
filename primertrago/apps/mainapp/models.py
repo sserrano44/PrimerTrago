@@ -61,12 +61,14 @@ class Bar(models.Model):
 
 
 class HappyHour(models.Model):
-    bar = models.ForeignKey(Bar)
-    monday = models.BooleanField()
-    tuesday = models.BooleanField()
-    wednesday = models.BooleanField()
-    thursday = models.BooleanField()
-    friday= models.BooleanField()
+    bar         = models.ForeignKey(Bar)
+    monday      = models.BooleanField()
+    tuesday     = models.BooleanField()
+    wednesday   = models.BooleanField()
+    thursday    = models.BooleanField()
+    friday      = models.BooleanField()
+    saturday    = models.BooleanField()
+    sunday      = models.BooleanField()
     hour_start  = models.TimeField()
     hour_end    = models.TimeField()
     description = models.TextField()

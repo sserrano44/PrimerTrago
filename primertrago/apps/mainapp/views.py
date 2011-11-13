@@ -17,6 +17,7 @@ def home(request):
         form = FilterForm(request.GET)
         params['filter_form']  = form
         if form.is_valid() is False:
+            print "mal"
             return TemplateResponse(request, "home.html", params)
             
         query = Bar.objects.all()
@@ -29,8 +30,8 @@ def home(request):
             query = query.filter(** {'happyhour__%s' % weekday: True})
         if hour:
             print hour
-            query = query.filter(happyhour__hour_start__gte=hour)
-            query = query.filter(happyhour__hour_end__lte=hour)
+            query = query.filter(happyhour__hour_start__lte=hour)
+            query = query.filter(happyhour__hour_end__gte=hour)
         if neighborhood:
             print neighborhood
             query = query.filter(neighborhood=neighborhood)

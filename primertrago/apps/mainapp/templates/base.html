@@ -12,13 +12,8 @@
     <![endif]-->
 
     <!-- Le styles -->
+    <link href="{{ STATIC_URL }}css/jquery-ui-1.8.16.custom.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-      }
-    </style>
-
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico">
     <link rel="apple-touch-icon" href="{{ STATIC_URL }}images/apple-touch-icon.png">
@@ -26,12 +21,36 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{ STATIC_URL }}images/apple-touch-icon-114x114.png">
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	{% block extra_head %}{% endblock %}
 
   </head>
 
   <body>
-
+  <div id="contentedor">
+	<div id="head">
+		<a href="{% url mainapp_home %}" title="Primer Trago - vamos a emborrachar a buenos aires" class="logo"></a>
+		
+		<div class="box_gris box_gris_down">
+			<ul>
+				<li><a href="">FB Connect</a></li>
+				<li><a href="">Registrarse</a></li>
+				<li><a href="">Ingresar</a></li>				
+			</ul>
+		</div>
+		<div class="clear"></div>
+		<div class="box_gris box_gris_top" style="height: 28px;">
+			<div class="left" style="display: block; margin-top: 5px;">Newsletter</div>			
+			<form action="post" class="left">
+				<input type="text" name="" value="email" onclick="this.value=''" class="i_newsletter left" />
+				<input type="submit" name="ok" value="OK" class="i_bottom left" />
+			</form>
+		</div>		
+		<div class="clear"></div>
+	</div>
+	
+	
+	{% comment %}
     <div class="topbar">
       <div class="fill">
         <div class="container">
@@ -49,6 +68,20 @@
         </div>
       </div>
     </div>
+	{% endcomment %}
+
+      <div>
+        <div id="happyHourFilter">
+          <form action="." method="GET" id="happyHourForm">
+              <input type="hidden" name="filter" value="1"/>
+              {{ filter_form.weekday }}
+              {{ filter_form.hour }}
+              {{ filter_form.neighborhood }}
+	      <input type="submit" class="btn submit" value="go">
+            </form>
+        </div>
+      </div>
+
 
     <div class="container">
 	{% block container %}
@@ -58,6 +91,6 @@
       </footer>
 
     </div> <!-- /container -->
-
+	</div>
   </body>
 </html>
