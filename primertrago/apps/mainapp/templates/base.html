@@ -71,15 +71,35 @@
 	{% endcomment %}
 
       <div>
-        <div id="happyHourFilter">
-          <form action="." method="GET" id="happyHourForm">
+        <div id="happyHourFilter" class="row" style="">
+          <div class="span4 title">
+            Encuentra tu Happy Hour
+          </div>
+          <div class="span8 ">
+            <div class="row">
+            <form action="." method="GET" id="happyHourForm">
               <input type="hidden" name="filter" value="1"/>
-              {{ filter_form.weekday }}
+              <div>
+                <label for="id_weekday">El</label>
+                {{ filter_form.weekday }}
+              </div>
+              <div>
+              <label for="id_hour">a las</label>
               {{ filter_form.hour }}
+            </div>
+            <div>
+              <label for="id_neighborhood">en</label>
               {{ filter_form.neighborhood }}
-	      <input type="submit" class="btn submit" value="go">
+            </div>
+              <input type="submit" class="btn submit" value="Ir" class="medium">
+        </form>
+      </div>
+      </div>
+          <div class="span4 search">
+             <form action="/search/">
+              <input type="text" name="q" placeholder="Buscar">
             </form>
-        </div>
+          </div>
       </div>
 
 
