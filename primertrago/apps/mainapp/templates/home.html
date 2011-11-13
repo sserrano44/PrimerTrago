@@ -4,9 +4,9 @@
 {% block container %}
 	<div id="contenido">
 
-		{% if featured %}
+		{% if featured.count > 0 %}
 		<h1>Destacados</h1>
-		{% for bar in featured.0 %}
+		{% for bar in featured %}
 		<div id="bar_horizontal" class="margin-bottom: 5px;">
 		
 			<a href="{{ bar.url }}">

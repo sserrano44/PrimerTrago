@@ -73,6 +73,7 @@
     </div>
 	{% endcomment %}
 
+{% block bfilter %}
       <div>
         <div id="happyHourFilter" class="row" style="">
           <div class="span4 title">
@@ -80,7 +81,7 @@
           </div>
           <div class="span8 ">
             <div class="row">
-            <form action="." method="GET" id="happyHourForm">
+            <form action="/" method="GET" id="happyHourForm">
               <input type="hidden" name="filter" value="1"/>
               <div>
                 <label for="id_weekday">El</label>
@@ -104,6 +105,7 @@
             </form>
           </div>
       </div>
+{% endblock %}
 
     <div class="container">
 	{% block container %}

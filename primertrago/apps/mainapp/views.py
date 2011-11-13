@@ -40,7 +40,7 @@ def home(request):
     else:
         form = FilterForm(request.GET)
         params['filter_form']  = form
-        params['featured'] = Bar.objects.filter(featured=True),
+        params['featured'] = Bar.objects.filter(featured=True)
         params['bars'] = Bar.objects.all()
     
     #return render_to_response("home.html", params, RequestContext(request))
