@@ -68,12 +68,17 @@ $(document).ready(function() {
 					{% for happy in bar.happyhour_set.all %}
           			<p>
           			Dias: 
-          			{% if happy.monday %}Lunes{% endif %},
-          			{% if happy.tuesday %}Martes{% endif %},
-          			{% if happy.monday %}Lunes{% endif %},
-          			
-          			{{ happy.description }}
+          			{% if happy.monday %}Lunes,{% endif %}
+          			{% if happy.tuesday %}Martes,{% endif %}
+          			{% if happy.wednesday %}Miercoles,{% endif %}
+          			{% if happy.thursday %}Jueves,{% endif %}
+          			{% if happy.friday %}Viernes,{% endif %}
+          			{% if happy.saturday %}Sabado,{% endif %}
+          			{% if happy.sunday %}Domindo{% endif %}
+          			</p>
           			<p>
+          			{{ happy.description }}
+          			</p>
           			{% endfor %}
 					
 					<span class="descripcion"></span>
