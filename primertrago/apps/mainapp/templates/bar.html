@@ -25,9 +25,7 @@ $(document).ready(function() {
 {% endblock %}
 
 {% block container %}
-		<div id="sidebar">
-		<div id="map_canvas" style="width: 280px; height: 280px"></div>
-		</div>
+	<div id="contenido">
 
 		<div id="bar_horizontal">
 			{% if bar.image %}
@@ -130,6 +128,12 @@ var disqus_developer = 1; // developer mode is on
 
   </div>
   	{% endcomment %}
+  
+  	</div>
+  
+		<div id="sidebar">
+		<div id="map_canvas" style="width: 280px; height: 280px"></div>
+		</div>
 
 {% endblock %}
 
