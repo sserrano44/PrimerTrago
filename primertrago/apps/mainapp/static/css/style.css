@@ -18,48 +18,50 @@
 
 
 #happyHourFilter {
-  float: left;
-  position: relative;
-  margin: 12px 12px 3px;
-  background: #FBFAFA url(/static/images/find_hh_bar.png) no-repeat scroll 0 0;
-  width: 955px;
-  height: 41px;
+  background-color: #F69d2a ;
+    -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#happyHourFilter, #happyHourForm label {
+  text-shadow: -0.1em -0.1em #b37212;
+  color: #fff;
+  font-weight: 800;
+}
+
+#happyHourFilter h2 {
+  font-size: 18px;
+  color: #fff;
+}
+
+#happyHourForm label {
+  width: 35px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+#happyHourForm select {
+  width: 100px;
+}
+
+#happyHourForm div {
   display: inline;
-  z-index: 41;
+  float: left;
+  margin-left: 5px;
 }
 
-#happyHourForm {
-float: left;
-position: relative;
+#happyHourForm input[type="submit"] {
+  display: inline;
+  float: left;
+  margin-left: 5px;
 }
 
-#happyHourForm .day {
-width: 124px;
-left: 200px;
-}
+#happyHourFilter form {
+  margin-top: 5px;
+  margin-bottom: 5px;
+ }
 
-#happyHourForm .dropdown {
-position: absolute;
-font-size: 15px;
-top: 10px;
-margin-top: 2px;
-}
-
-#happyHourForm .time {
-left: 352px;
-margin-top: 0;
-}
-
-#happyHourForm .location {
-width: 170px;
-left: 444px;
-}
-
-#happyHourForm .submit {
-  color: #666;
-  font-size: 15px;
-  font-weight: bold;
-  position: absolute;
-  left: 624px;
-  top: 11px;
-}
+#happyHourFilter search {
+  margin-right: 10px;
+ }

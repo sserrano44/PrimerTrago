@@ -4,18 +4,40 @@
 
 {% block container %}
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div>
 
-
-        <div id="happyHourFilter">
-          <form action="." method="GET" id="happyHourForm">
+        <div id="happyHourFilter" class="row">
+          <div class="span4 title">
+            <h2>Encuentra tu Happy Hour</h2>
+          </div>
+          <div class="span8 ">
+            <div class="row">
+            <form action="." method="GET" id="happyHourForm">
               <input type="hidden" name="filter" value="1"/>
-              {{ filter_form.weekday }}
+              <div>
+                <label for="id_weekday">El</label>
+                {{ filter_form.weekday }}
+              </div>
+              <div>
+              <label for="id_hour">a las</label>
               {{ filter_form.hour }}
+            </div>
+            <div>
+              <label for="id_neighborhood">en</label>
               {{ filter_form.neighborhood }}
-	      <input type="submit" class="btn submit" value="go">
+            </div>
+              <input type="submit" class="btn submit" value="Ir" class="medium">
+        </form>
+      </div>
+      </div>
+          <div class="span4 search">
+             <form action="/search/">
+              <input type="text" name="q" placeholder="Buscar">
             </form>
-        </div>
+          </div>
+        </div> <!-- /row -->
+
+
+      <div class="row">
         <h1>Hello, world!</h1>
         <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
         <a class="btn primary large">Learn more &raquo;</a></p>
