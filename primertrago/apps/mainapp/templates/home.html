@@ -35,7 +35,7 @@
       	{% endif %}
 
         {% for bar in bars %}
-		<div id="bar_vertical">
+		<div id="bar_vertical" {% if forloop.counter|divisibleby:"4" %}style="margin-right: 0;"{% endif %}>
 			{% if bar.image %}
       		{% thumbnail bar.image 120x120 as thumb %}
       		<img src="{{ thumb.url }}" class="left" style="margin-bottom: 5px;" />
@@ -56,6 +56,7 @@
 			</div>
 			<div class="clear"></div>			
 		</div>
+		{% if forloop.counter|divisibleby:"4" %}<div class="clear"></div>{% endif %}
         {% endfor %}	
 	</div>
 	<div id="sidebar">
