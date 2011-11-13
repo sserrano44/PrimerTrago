@@ -9,17 +9,88 @@
 $(document).ready(function() {
 	var latlng = new google.maps.LatLng({{ bar.loc }});
     var myOptions = {
-      zoom: 8,
+      zoom: 11,
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	var marker = new google.maps.Marker({
+	      position: latlng,
+	});
+  	marker.setMap(map); 
+
 })
 </script>
 {% endif %}
 {% endblock %}
 
 {% block container %}
+		<div id="sidebar">
+		<div id="map_canvas" style="width: 280px; height: 280px"></div>
+		</div>
+
+		<div id="bar_horizontal">
+			{% if bar.image %}
+      		{% thumbnail bar.image 200x200 crop as thumb %}
+      		<img src="{{ thumb.url }}" class="left"/>
+      		{% else %}
+      		<img src="{{ STATIC_URL }}images/foto_bar.png" class="left"/>
+      		{% endif %}
+			<div class="right" style=" width: 280px;">
+				<span class="nombre">{{ bar.name }}</span>
+					<div class="clear"></div>
+				<span class="direccion">{{ bar.address }}</span>
+				<span class="descripcion">{{ bar.description }}</span>
+					<div class="clear"></div>
+				
+					<div class="clear"></div>
+				<span class="barrio">Palermo</span>				
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<div id="bar_horizontal" style="margin:10px  10px 0 0; width: 271px; float: left;">			
+			<div style="width: 240px;">
+				<h2>Detalles</h2>
+					<div class="clear"></div>				
+					<span class="descripcion"><strong>Tel&eacute;fono:</strong> {{ bar.phone|default:".." }}</span>
+					<div class="clear"></div>
+					<span class="descripcion"><strong>Horarios:</strong> ..</span>
+					<div class="clear"></div>
+					<span class="descripcion"><strong>Web:</strong>{{ bar.website|default:".." }}</span>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div id="bar_horizontal" style="margin-top: 10px; width: 271px;float: left;">			
+			<div style="width: 240px;">
+				<h2>Happy Hours!</h2>
+					<div class="clear"></div>
+					{% for happy in bar.happyhour_set.all %}
+          			<p>
+          			Dias: 
+          			{% if happy.monday %}Lunes{% endif %},
+          			{% if happy.tuesday %}Martes{% endif %},
+          			{% if happy.wednesday %}Miercoles{% endif %},
+          			{% if happy.thursday %}Jueves{% endif %},
+          			{% if happy.friday %}Viernes{% endif %},
+          			{% if happy.saturday %}Sabado{% endif %},
+          			{% if happy.sunday %}Domindo{% endif %},
+          			</p>
+          			<p>
+          			{{ happy.description }}
+          			</p>
+          			{% endfor %}
+					
+					<span class="descripcion"></span>
+					<div class="clear"></div>		
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		
+		
+
+	{% comment %}
   <div class="row">
   	<div class="span3">
        	{% if bar.image %}
@@ -37,9 +108,11 @@ $(document).ready(function() {
       {% endfor %}
     </div>
     <div class="span5">
-       	<div id="map_canvas" style="width: 250px; height: 250px"></div>
+       	
 	</div>
     
   </div>
+  	{% endcomment %}
+  
 {% endblock %}
 

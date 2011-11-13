@@ -3,7 +3,7 @@
 
 {% block container %}
 	<div id="contenido">
-		
+
 		{% if featured %}
 		<h1>Destacados</h1>
 		{% for bar in featured %}
@@ -16,7 +16,6 @@
       		<img src="{{ STATIC_URL }}images/foto_bar.png" class="left"/>
       		{% endif %}
       		</a>
-			
 			<div class="right" style=" width: 450px;">
 				<span class="nombre"><a href="{{ bar.url }}" title="Entrar al Bar">{{ bar.name }}</a></span>
 					<div class="clear"></div>
@@ -26,7 +25,7 @@
 					<div class="clear"></div>
 					<span class="barrio">
 					{{ bar.neighborhood.name }}{% if bar.subneighborhood %} - {{ bar.subneighborhood }}{% endif %}
-					</span>	
+					</span>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -37,16 +36,16 @@
         {% for bar in bars %}
 		<div id="bar_vertical" {% if forloop.counter|divisibleby:"4" %}style="margin-right: 0;"{% endif %}>
 			{% if bar and bar.image.url %}
-      		{% thumbnail bar.image 120x120 as thumb %}      		
+      		{% thumbnail bar.image 120x120 as thumb %}
 	      		{% if thumb.url %}
 	      		<img src="{{ thumb.url }}" class="left" style="margin-bottom: 5px;" />
 	      		{% else %}
 	      		<img src="{{ STATIC_URL }}images/foto_bar.png"/>
-	      		{% endif %}      		
+	      		{% endif %}
       		{% else %}
       		<img src="{{ STATIC_URL }}images/foto_bar.png"/>
       		{% endif %}
-			
+
 			<div class="right" style=" width: 120px;">
 				<span class="nombre"><a href="{{ bar.url }}" title="Entrar al Bar">{{ bar.name }}</a></span>
 				<div class="clear"></div>
@@ -56,18 +55,20 @@
 				<div class="clear"></div>
 				<span class="barrio">
 				{{ bar.neighborhood.name }}{% if bar.subneighborhood %} - {{ bar.subneighborhood }}{% endif %}
-				</span>				
+				</span>
 			</div>
-			<div class="clear"></div>			
+			<div class="clear"></div>
 		</div>
 		{% if forloop.counter|divisibleby:"4" %}<div class="clear"></div>{% endif %}
+		{% empty %}
+		<p>No hay resultados para la busqueda</p>
         {% endfor %}	
 	</div>
 	<div id="sidebar">
 		<img src="{{ STATIC_URL }}css/banner.png" />
 	</div>
-	<div class="clear"></div>	
-	
+	<div class="clear"></div>
+
 
 
 
@@ -102,7 +103,6 @@
 $(document).ready(function() {
 	$('#id_hour').timepicker({
 		ampm: false,
-		hourMin: 8,
 		timeFormat: 'hh:mm'
 	});
 });
