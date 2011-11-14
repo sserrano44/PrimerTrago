@@ -37,16 +37,18 @@
 
         {% for bar in bars %}
 		<div id="bar_vertical" {% if forloop.counter|divisibleby:"4" %}style="margin-right: 0;"{% endif %}>
-			{% if bar and bar.image.url %}
-      		{% thumbnail bar.image 120x120 as thumb %}
+                        <a href="{{ bar.url }}">
+                        {% if bar and bar.image.url %}
+         		{% thumbnail bar.image 120x120 as thumb %}
 	      		{% if thumb.url %}
 	      		<img src="{{ thumb.url }}" class="left" style="margin-bottom: 5px;" />
 	      		{% else %}
 	      		<img src="{{ STATIC_URL }}images/foto_bar.png"/>
 	      		{% endif %}
-      		{% else %}
-      		<img src="{{ STATIC_URL }}images/foto_bar.png"/>
-      		{% endif %}
+          		{% else %}
+         		<img src="{{ STATIC_URL }}images/foto_bar.png"/>
+       	                {% endif %}
+                        </a>
 
 			<div class="right" style=" width: 120px;">
 				<span class="nombre"><a href="{{ bar.url }}" title="Entrar al Bar">{{ bar.name }}</a></span>
